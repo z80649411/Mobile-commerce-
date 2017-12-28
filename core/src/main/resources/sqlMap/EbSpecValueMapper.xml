@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rl.ecps.sqlMap.EbSpecValueMapper" >
+  <resultMap id="BaseResultMap" type="com.rl.ecps.model.EbSpecValue" >
+    <id column="SPEC_ID" property="specId" jdbcType="DECIMAL" />
+    <result column="SKU_ID" property="skuId" jdbcType="DECIMAL" />
+    <result column="FEATURE_ID" property="featureId" jdbcType="DECIMAL" />
+    <result column="SPEC_VALUE" property="specValue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SPEC_ID, SKU_ID, FEATURE_ID, SPEC_VALUE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from EB_SPEC_VALUE
+    where SPEC_ID = #{specId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from EB_SPEC_VALUE
+    where SPEC_ID = #{specId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.rl.ecps.model.EbSpecValue" >
+    insert into EB_SPEC_VALUE (SPEC_ID, SKU_ID, FEATURE_ID, 
+      SPEC_VALUE)
+    values (seqspecvalueid.nextval, #{skuId,jdbcType=DECIMAL}, #{featureId,jdbcType=DECIMAL},
+      #{specValue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rl.ecps.model.EbSpecValue" >
+    insert into EB_SPEC_VALUE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="specId != null" >
+        SPEC_ID,
+      </if>
+      <if test="skuId != null" >
+        SKU_ID,
+      </if>
+      <if test="featureId != null" >
+        FEATURE_ID,
+      </if>
+      <if test="specValue != null" >
+        SPEC_VALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="specId != null" >
+        #{specId,jdbcType=DECIMAL},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=DECIMAL},
+      </if>
+      <if test="featureId != null" >
+        #{featureId,jdbcType=DECIMAL},
+      </if>
+      <if test="specValue != null" >
+        #{specValue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rl.ecps.model.EbSpecValue" >
+    update EB_SPEC_VALUE
+    <set >
+      <if test="skuId != null" >
+        SKU_ID = #{skuId,jdbcType=DECIMAL},
+      </if>
+      <if test="featureId != null" >
+        FEATURE_ID = #{featureId,jdbcType=DECIMAL},
+      </if>
+      <if test="specValue != null" >
+        SPEC_VALUE = #{specValue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SPEC_ID = #{specId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rl.ecps.model.EbSpecValue" >
+    update EB_SPEC_VALUE
+    set SKU_ID = #{skuId,jdbcType=DECIMAL},
+      FEATURE_ID = #{featureId,jdbcType=DECIMAL},
+      SPEC_VALUE = #{specValue,jdbcType=VARCHAR}
+    where SPEC_ID = #{specId,jdbcType=DECIMAL}
+  </update>
+</mapper>

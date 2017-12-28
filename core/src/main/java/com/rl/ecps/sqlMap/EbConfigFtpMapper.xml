@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rl.ecps.sqlMap.EbConfigFtpMapper" >
+  <resultMap id="BaseResultMap" type="com.rl.ecps.model.EbConfigFtp" >
+    <id column="SERIAL_NO" property="serialNo" jdbcType="DECIMAL" />
+    <result column="PURPOSE" property="purpose" jdbcType="DECIMAL" />
+    <result column="FTP_HOST" property="ftpHost" jdbcType="VARCHAR" />
+    <result column="FTP_PORT" property="ftpPort" jdbcType="DECIMAL" />
+    <result column="FTP_USERNAME" property="ftpUsername" jdbcType="VARCHAR" />
+    <result column="FTP_PASSWORD" property="ftpPassword" jdbcType="VARCHAR" />
+    <result column="BASE_DIR" property="baseDir" jdbcType="VARCHAR" />
+    <result column="AUTO_START" property="autoStart" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SERIAL_NO, PURPOSE, FTP_HOST, FTP_PORT, FTP_USERNAME, FTP_PASSWORD, BASE_DIR, AUTO_START
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from EB_CONFIG_FTP
+    where SERIAL_NO = #{serialNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from EB_CONFIG_FTP
+    where SERIAL_NO = #{serialNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.rl.ecps.model.EbConfigFtp" >
+    insert into EB_CONFIG_FTP (SERIAL_NO, PURPOSE, FTP_HOST, 
+      FTP_PORT, FTP_USERNAME, FTP_PASSWORD, 
+      BASE_DIR, AUTO_START)
+    values (#{serialNo,jdbcType=DECIMAL}, #{purpose,jdbcType=DECIMAL}, #{ftpHost,jdbcType=VARCHAR}, 
+      #{ftpPort,jdbcType=DECIMAL}, #{ftpUsername,jdbcType=VARCHAR}, #{ftpPassword,jdbcType=VARCHAR}, 
+      #{baseDir,jdbcType=VARCHAR}, #{autoStart,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rl.ecps.model.EbConfigFtp" >
+    insert into EB_CONFIG_FTP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serialNo != null" >
+        SERIAL_NO,
+      </if>
+      <if test="purpose != null" >
+        PURPOSE,
+      </if>
+      <if test="ftpHost != null" >
+        FTP_HOST,
+      </if>
+      <if test="ftpPort != null" >
+        FTP_PORT,
+      </if>
+      <if test="ftpUsername != null" >
+        FTP_USERNAME,
+      </if>
+      <if test="ftpPassword != null" >
+        FTP_PASSWORD,
+      </if>
+      <if test="baseDir != null" >
+        BASE_DIR,
+      </if>
+      <if test="autoStart != null" >
+        AUTO_START,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=DECIMAL},
+      </if>
+      <if test="purpose != null" >
+        #{purpose,jdbcType=DECIMAL},
+      </if>
+      <if test="ftpHost != null" >
+        #{ftpHost,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpPort != null" >
+        #{ftpPort,jdbcType=DECIMAL},
+      </if>
+      <if test="ftpUsername != null" >
+        #{ftpUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpPassword != null" >
+        #{ftpPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="baseDir != null" >
+        #{baseDir,jdbcType=VARCHAR},
+      </if>
+      <if test="autoStart != null" >
+        #{autoStart,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rl.ecps.model.EbConfigFtp" >
+    update EB_CONFIG_FTP
+    <set >
+      <if test="purpose != null" >
+        PURPOSE = #{purpose,jdbcType=DECIMAL},
+      </if>
+      <if test="ftpHost != null" >
+        FTP_HOST = #{ftpHost,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpPort != null" >
+        FTP_PORT = #{ftpPort,jdbcType=DECIMAL},
+      </if>
+      <if test="ftpUsername != null" >
+        FTP_USERNAME = #{ftpUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpPassword != null" >
+        FTP_PASSWORD = #{ftpPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="baseDir != null" >
+        BASE_DIR = #{baseDir,jdbcType=VARCHAR},
+      </if>
+      <if test="autoStart != null" >
+        AUTO_START = #{autoStart,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where SERIAL_NO = #{serialNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rl.ecps.model.EbConfigFtp" >
+    update EB_CONFIG_FTP
+    set PURPOSE = #{purpose,jdbcType=DECIMAL},
+      FTP_HOST = #{ftpHost,jdbcType=VARCHAR},
+      FTP_PORT = #{ftpPort,jdbcType=DECIMAL},
+      FTP_USERNAME = #{ftpUsername,jdbcType=VARCHAR},
+      FTP_PASSWORD = #{ftpPassword,jdbcType=VARCHAR},
+      BASE_DIR = #{baseDir,jdbcType=VARCHAR},
+      AUTO_START = #{autoStart,jdbcType=DECIMAL}
+    where SERIAL_NO = #{serialNo,jdbcType=DECIMAL}
+  </update>
+</mapper>

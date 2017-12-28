@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="EbWSItemServiceService" targetNamespace="http://webservice.ecps.rl.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://webservice.ecps.rl.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://webservice.ecps.rl.com/" version="1.0" xmlns:tns="http://webservice.ecps.rl.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="publishItem" type="tns:publishItem"/>
+<xs:element name="publishItemResponse" type="tns:publishItemResponse"/>
+<xs:complexType name="publishItem">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"/>
+<xs:element minOccurs="0" name="arg1" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="publishItemResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="publishItemResponse">
+    <wsdl:part element="tns:publishItemResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="publishItem">
+    <wsdl:part element="tns:publishItem" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EbWSItemService">
+    <wsdl:operation name="publishItem">
+      <wsdl:input message="tns:publishItem" name="publishItem">
+    </wsdl:input>
+      <wsdl:output message="tns:publishItemResponse" name="publishItemResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EbWSItemServiceServiceSoapBinding" type="tns:EbWSItemService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="publishItem">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="publishItem">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="publishItemResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EbWSItemServiceService">
+    <wsdl:port binding="tns:EbWSItemServiceServiceSoapBinding" name="EbWSItemServicePort">
+      <soap:address location="http://localhost:8080/portal/services/publishItem"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

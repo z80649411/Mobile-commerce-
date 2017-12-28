@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+"-//mybatis.org//DTD MyBatis Generator Configuration 
+1.0//EN"
+"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"
+>
+<generatorConfiguration>
+	<!-- 制定mysql的驱动包的路径 千万别放中文路径下 -->
+	<classPathEntry location="F:\传智168期JAVA\传智168期JAVA\移动商城\shoprepository\shoprepository\repository\com\oracle\ojdbc14\10.2.0.2.0\ojdbc14-10.2.0.2.0.jar" />
+
+	<!-- 配置数据源和生成的代码所存放的位置 -->
+	<context id="context1" >
+
+		<commentGenerator>
+			<!-- 是否取消注释 -->
+			<property name="suppressAllComments" value="true" />
+			<!-- 是否生成注释代时间戳 -->
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:ZHONGFUCHENG" userId="zhongfucheng"
+			password="zhong" />
+		<!-- 所生成的实体类的位置默认资源包src -->
+		<javaModelGenerator targetPackage="com.rl.ecps.model" targetProject="src/main/java" />
+		<!-- 所生成的sqlMap的影射文件的位置,默认资源包src -->
+		<sqlMapGenerator targetPackage="com.rl.ecps.sqlMap" targetProject="src/main/java" />
+
+
+
+
+		<!-- 为哪些表生成代码 tableName:表名 schema:不用填写 -->
+		
+		<table schema="" tableName="EB_CONFIG_FTP" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false"
+		>
+		</table>
+
+	</context>
+</generatorConfiguration>

@@ -1,0 +1,720 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="http://www.asiainfo-linkage.com/"/>
+    <meta name="copyright" content="asiainfo-linkage.com 版权所有，未经授权禁止链接、复制或建立镜像。"/>
+    <meta name="description" content="中国移动通信 name.com"/>
+    <meta name="keywords" content="中国移动通信 name.com"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"/>
+    <title>商品详细_移动商城_中国移动通信</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="search" type="application/opensearchdescription+xml" href="../opensearch.xml" title="移动购物"/>
+
+        <link rel="stylesheet" href="../res/css/style.css"/>
+    <script src="http://localhost:8080/portal/res/js/jquery.js"></script>
+    <script src="http://localhost:8080/portal/res/js/com.js"></script>
+    <script type="text/javascript">var path = "http://localhost:8080/portal";</script>
+    <script type="text/javascript" src="http://localhost:8080/portal/res/js/getUser.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#loginAlertIs").click(function () {
+                tipShow('#loginAlert');
+            });
+
+            $("#promptAlertIs").click(function () {
+                tipShow('#promptAlert');
+            });
+
+            $("#transitAlertIs").click(function () {
+                tipShow('#transitAlert');
+            });
+
+            var $smallList = $(".smallList"),
+                    $smallL = $(".smallL"),
+                    $smallR = $(".smallR"),
+                    smallLen = $(".smallList a").length,
+                    smallNum = 0;
+            $smallList.css("width", (smallLen * 60));
+            $smallL.live("click", function () {
+                if (smallNum > 0) {
+                    $smallList.stop(true, true).animate({
+                        "left": "+=" + 60
+                    }, 400);
+                    smallNum--;
+                }
+            });
+            $smallR.live("click", function () {
+                if (smallNum <= (smallLen - 5)) {
+                    $smallList.stop(true, true).animate({
+                        "left": "-=" + 60
+                    }, 400);
+                    smallNum++;
+                }
+            });
+
+            $('#ecpsShareIcon a').click(function () {
+
+                var type = $(this).attr('class');
+
+                var title = document.title;
+                var url = window.location.href;
+                var imgUrl = '';
+                var href = '';
+
+                var share = [
+                    {
+                        id: '0',
+                        type: 'sinawb',
+                        name: '分享到新浪微博',
+                        href: ['http://v.t.sina.com.cn/share/share.php?url=', encodeURIComponent(url), '&title=', encodeURIComponent(title)].join(''),
+                        bp: '0px 0px'
+                    },
+                    {
+                        id: '1',
+                        type: 'qqwb',
+                        name: '分享到腾讯微博',
+                        href: ['http://v.t.qq.com/share/share.php?url=', encodeURIComponent(url), '&title=', encodeURIComponent(title)].join(''),
+                        bp: '0px -16px'
+                    },
+                    {
+                        id: '2',
+                        type: 'renren',
+                        name: '分享到人人网',
+                        href: ['http://www.connect.renren.com/share/sharer?url=', encodeURIComponent(url), '&title=', encodeURIComponent(title)].join(''),
+                        bp: '0px -32px'
+                    },
+                    {
+                        id: '3',
+                        type: 'qqzone',
+                        name: '分享到QQ空间',
+                        href: ['http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=', encodeURIComponent(url), '&title=', encodeURIComponent(title)].join(''),
+                        bp: '0px -48px'
+                    },
+                    {
+                        id: '4',
+                        type: 'sohuwb',
+                        name: '分享到搜狐微博',
+                        href: ['http://t.sohu.com/third/post.jsp?content=utf-8&url=', encodeURIComponent(url), '&title=', encodeURIComponent(title)].join(''),
+                        bp: '0px -64px'
+                    },
+                    {
+                        id: '5',
+                        type: '',
+                        name: '分享到开心网',
+                        href: ['http://www.kaixin001.com/repaste/bshare.php?rurl=', encodeURIComponent(url), '&rtitle=', encodeURIComponent(title)].join(''),
+                        bp: '0px -80px'
+                    },
+                    {
+                        id: '6',
+                        type: '',
+                        name: '分享到51社区',
+                        href: ['http://share.51.com/share/outSiteShare.php?uri=', encodeURIComponent(url), '&title=', encodeURIComponent(title)].join(''),
+                        bp: '0px -96px'
+                    }
+                ];
+
+                for (var i = 0; i < share.length; i++) {
+                    if (type == share[i].type) {
+                        href = share[i].href;
+                    }
+                    ;
+                }
+
+                if (type == 'copy') {
+
+                    var copyText = url.replace(/[.]{1}\d[.]{1}/gi, ".");
+                    copyText = copyText.replace(/\.+u+\d+\.+html/, ".html");
+                    copyText = title + "\r\n" + copyText + "\r\n";
+                    if (window.clipboardData) {
+                        window.clipboardData.setData("Text", copyText);
+                        alert('复制成功！');
+                    }
+                } else {
+                    $(this).attr('href', href);
+                }
+
+            });
+
+            $('.sub').mousedown(function () {
+                var num = $('.num').val();
+                --num;
+                if (num == 0) {
+                    $('#sub_add_msg').html('您填写的数字超过购买下限，单次购买下限为<var>1</var>件。');
+                    $('#sub_add_msg').show();
+                    return;
+                } else {
+                    $('#sub_add_msg').hide();
+                }
+                $('.num').val(num);
+
+            });
+
+            $('.add').mousedown(function () {
+                var num = $('.num').val();
+                ++num;
+                if (num == 6) {
+                    $('#sub_add_msg').html('您填写的数字超过购买上限，单次购买上限为<var>5</var>件。');
+                    $('#sub_add_msg').show();
+                    return;
+                } else {
+                    $('#sub_add_msg').hide();
+                }
+                $('.num').val(num);
+            });
+
+
+            //为每个a标签绑定事件
+            $("#skuChange a").click(function () {
+
+                //点击某一个时，样式发生改变
+                $(this).attr("class", "here");
+                //其他的样式去除掉
+                $(this).siblings().attr("class","");
+
+                //得到a标签的自定义属性skuId
+                var skuId = $(this).attr("skuId");
+
+                $.ajax({
+                    url: "http://localhost:8080/portal/item/updatePriceAndStock.do",
+                    type: "post",
+                    data:{skuId:skuId},
+                    success: function (responseText) {
+                        var parseJSON = $.parseJSON(responseText);
+
+                        //将价钱设置为当前库存的
+
+                        $("#skuPrice").html(parseJSON.sku.skuPrice);
+                        $("#marketPrice").html(parseJSON.sku.marketPrice);
+
+                        //判断是否有货
+                        var stock = parseJSON.sku.stockInventory;
+                        console.log(stock);
+                        if(stock>0) {
+                            $("#stock").html("有货");
+                        }else {
+                            $("#stock").html("无货");
+
+                        }
+                    },
+                    error:function () {
+                    }
+                });
+
+
+            });
+
+            $("#skuChange a:first").trigger("click");
+
+
+        });
+        function buy() {
+            window.location.href = "shop/confirmProductCase.jsp";
+        }
+
+        function addCart() {
+            window.location.href = "shop/car.jsp";
+        }
+    </script>
+</head>
+<body>
+<div id="tipAlert" class="w tips">
+    <p class="l">本网站将于4月11日12:00进行系统维护，维护期间，本站将暂停业务办理等相关业务，敬请见谅。</p>
+    <p class="r"><a href="javascript:void(0);" title="关闭" onclick="$('#tipAlert').hide();"></a></p>
+</div>
+
+<div class="bar">
+    <div class="bar_w">
+        <p class="l">
+            <!-- 未登录 -->
+            <b class="l">
+                <a href="#" title="个人客户" class="here">个人客户</a>
+                <a href="#" title="企业客户">企业客户</a>
+            </b>
+            <span class="l">
+			欢迎来到中国移动！<a href="javascript:void(0);" title="登录" id="loginAlertIs"
+                        class="orange"><samp>[</samp>请登录<samp>]</samp></a>&nbsp;<a href="passport/register.html"
+                                                                                   title="免费注册">免费注册</a>
+			<a href="javascript:void(0);" id="promptAlertIs" title="promptAlert">promptAlert</a>
+			<a href="javascript:void(0);" id="transitAlertIs" title="transitAlert">transitAlert</a>
+		</span>
+        </p>
+        <ul class="r uls">
+
+            <li class="dev"><a href="#" title="在线客服">在线客服</a></li>
+            <li class="dev"><a href="#" title="关于中国移动">关于中国移动</a></li>
+            <li class="dev after"><a href="#" title="English">English</a></li>
+
+        </ul>
+    </div>
+</div>
+
+<div class="w header">
+    <h1><a href="http://www.bj.10086.cn" title="中国移动通信">中国移动通信</a></h1>
+    <div class="area">
+        <dl id="city">
+            <dt><a href="javascript:void(0);" title="贵州">贵州<samp class="inb"></samp></a></dt>
+            <dd class="bx hidden">
+                <div class="tl"></div>
+                <div class="tr"></div>
+                <ul class="ul">
+                    <li><a href="http://www.bj.10086.cn" title="北京">北京</a></li>
+                    <li><a href="http://www.gd.10086.cn" title="广东">广东</a></li>
+                    <li><a href="http://www.sh.10086.cn" title="上海">上海</a></li>
+                    <li><a href="http://www.tj.10086.cn" title="天津">天津</a></li>
+                    <li><a href="http://www.cq.10086.cn" title="重庆">重庆</a></li>
+                    <li><a href="http://www.ln.10086.cn" title="辽宁">辽宁</a></li>
+                    <li><a href="http://www.js.10086.cn" title="江苏">江苏</a></li>
+                    <li><a href="http://www.he.10086.cn" title="河北">河北</a></li>
+                    <li><a href="http://www.sc.10086.cn" title="四川">四川</a></li>
+                    <li><a href="http://www.sn.10086.cn" title="陕西">陕西</a></li>
+                    <li><a href="http://www.sx.10086.cn" title="山西">山西</a></li>
+                    <li><a href="http://www.ha.10086.cn" title="河南">河南</a></li>
+                    <li><a href="http://www.jl.10086.cn" title="吉林">吉林</a></li>
+                    <li><a href="http://www.sd.10086.cn" title="山东">山东</a></li>
+                    <li><a href="http://www.ah.10086.cn" title="安徽">安徽</a></li>
+                    <li><a href="http://www.hn.10086.cn" title="湖南">湖南</a></li>
+                    <li><a href="http://www.gx.10086.cn" title="广西">广西</a></li>
+                    <li><a href="http://www.jx.10086.cn" title="江西">江西</a></li>
+                    <li><a href="http://www.gz.10086.cn" title="贵州">贵州</a></li>
+                    <li><a href="http://www.yn.10086.cn" title="云南">云南</a></li>
+                    <li><a href="http://www.xz.10086.cn" title="西藏">西藏</a></li>
+                    <li><a href="http://www.gs.10086.cn" title="甘肃">甘肃</a></li>
+                    <li><a href="http://www.zj.10086.cn" title="浙江">浙江</a></li>
+                    <li><a href="http://www.fj.10086.cn" title="福建">福建</a></li>
+                    <li><a href="http://www.hi.10086.cn" title="海南">海南</a></li>
+                    <li><a href="http://www.hb.10086.cn" title="湖北">湖北</a></li>
+                    <li><a href="http://www.nx.10086.cn" title="宁夏">宁夏</a></li>
+                    <li><a href="http://www.qh.10086.cn" title="青海">青海</a></li>
+                    <li><a href="http://www.xj.10086.cn" title="新疆">新疆</a></li>
+                    <li><a href="http://www.hl.10086.cn" title="黑龙江">黑龙江</a></li>
+                    <li class="col6"><a href="http://www.nm.10086.cn" title="内蒙古">内蒙古</a></li>
+                    <li class="col3"><a href="http://www.chinamobileltd.com" title="China Mobile Ltd">China Mobile
+                        Ltd</a></li>
+                    <li class="col3"><a href="http://labs.10086.cn" title="中国移动研究院">中国移动研究院</a></li>
+                    <li class="col3"><a href="http://www.cmdi.10086.cn" title="中国移动设计院">中国移动设计院</a></li>
+                </ul>
+                <div class="fl"></div>
+                <div class="fr"></div>
+            </dd>
+        </dl>
+    </div>
+    <p title="移动改变生活"><span>移动</span>改变生活<samp>&gt;&gt;</samp></p>
+</div>
+
+<div class="w nav">
+    <ul class="uls">
+        <li><a href="#" title="服务与支持" class="a"><b>服务与支持</b></a></li>
+        <li id="shop" class="here"><a href="#" title="网上营业厅" class="a"><b>网上营业厅</b></a>
+            <div class="col4 hidden">
+                <dl class="col">
+                    <dt title="手机商城">手机商城</dt>
+                    <dd><a href="#" title="诺基亚">诺基亚</a></dd>
+                    <dd><a href="#" title="华为">华为</a></dd>
+                    <dd><a href="#" title="三星">三星</a></dd>
+                    <dd><a href="#" title="最新优惠">中兴</a></dd>
+                </dl>
+                <dl class="col2">
+                    <dt title="网上选号">网上选号</dt>
+                    <dd><a href="#" title="全球通">全球通</a></dd>
+                    <dd><a href="#" title="动感地带">动感地带</a></dd>
+                    <dd><a href="#" title="神州行">神州行</a></dd>
+                </dl>
+                <dl class="col3">
+                    <dt title="优惠活动">优惠活动</dt>
+                    <dd><a href="#" title="购机返话费">购机返话费</a></dd>
+                    <dd><a href="#" title="优惠购机">优惠购机</a></dd>
+                </dl>
+                <span></span>
+            </div>
+        </li>
+        <li id="my"><a href="#" title="我的移动" class="a"><b>我的移动</b></a>
+            <div class="col2 hidden">
+                <dl class="col">
+                    <dt title="我的账户">我的账户</dt>
+                    <dd><a href="#" title="套餐余量查询">套餐余量查询</a></dd>
+                    <dd><a href="#" title="积分查询">积分查询</a></dd>
+                    <dd><a href="#" title="业务状态查询">业务状态查询</a></dd>
+                    <dd><a href="#" title="充值缴费" class="red">充值缴费</a></dd>
+                    <dd><a href="#" title="详单查询">详单查询</a></dd>
+                    <dd><a href="#" title="余额查询">余额查询</a></dd>
+                    <dd><a href="#" title="账单查询">账单查询</a></dd>
+                </dl>
+                <dl class="col2">
+                    <dt title="我要办理">我要办理</dt>
+                    <dd><a href="#" title="快速查找">快速查找</a></dd>
+                    <dd><a href="#" title="产品推荐">产品推荐</a></dd>
+                    <dd><a href="#" title="生活配对">生活配对</a></dd>
+                    <dd><a href="#" title="最新优惠">最新优惠</a></dd>
+                </dl>
+                <dl class="col3">
+                    <dt title="移动生活">移动生活</dt>
+                    <dd><a href="#" title="手机阅读">手机阅读</a></dd>
+                    <dd><a href="#" title="无线音乐俱乐部">无线音乐俱乐部</a></dd>
+                    <dd><a href="#" title="手机游戏">手机游戏</a></dd>
+                </dl>
+                <span></span>
+            </div>
+        </li>
+        <li><a href="#" title="首页" class="a"><b>首页</b></a></li>
+    </ul>
+</div>
+
+<div class="w sch">
+    <div class="l">
+        <dl class="goto">
+            <dt title="快捷办理通道">快捷办理通道<i class="inb"></i></dt>
+            <dd class="hidden">
+                <a href="#" target="_blank" title="移动数据流量详单">移动数据流量详单</a>
+                <a href="#" target="_blank" title="家庭亲情网">家庭亲情网</a>
+                <a href="#" target="_blank" title="虚拟网业务">虚拟网业务</a>
+                <a href="#" target="_blank" title="全球通商旅套餐">全球通商旅套餐</a>
+                <a href="#" target="_blank" title="短信业务">短信业务</a>
+                <a href="#" target="_blank" title="彩铃业务">彩铃业务</a>
+                <a href="#" target="_blank" title="WLAN业务(含校园版)">WLAN业务(含校园版)</a>
+                <a href="#" target="_blank" title="G3可视电话">G3可视电话</a>
+                <a href="#" target="_blank" title="全球通上网套餐">全球通上网套餐</a>
+                <a href="#" target="_blank" title="飞信业务">飞信业务</a>
+            </dd>
+        </dl>
+        <p><a href="#" title="购机选号">购机选号</a><samp>|</samp><a href="#" title="网上交费">网上交费</a><samp>|</samp><a href="#"
+                                                                                                            title="积分商城">积分商城</a><samp>|</samp><a
+                href="http://www.gz.10086.cn/zf/" target="_blank">资费专区</a></p>
+    </div>
+
+    <form method="post" action="" name="" class="r">
+        热门搜索：<a href="#" title="GPRS">GPRS</a><samp>|</samp><a href="#" title="全球通新88套餐">全球通新88套餐</a>
+        <select name="screahType" id="screahType">
+            <option>商城</option>
+            <option>号卡</option>
+            <option>门户</option>
+        </select><input type="text" class="txt_sch gray" id="screahWord" name="screahWord"
+                        onfocus="if(this.value=='请输入商品名称关键字'){this.value='';this.className='txt_sch'}"
+                        onblur="if(this.value==''){this.value='请输入商品名称关键字';this.className='txt_sch gray'}"
+                        value="请输入商品名称关键字"/><input type="submit" value="搜索" class="hand btn60x26"/></form>
+</div>
+
+<div class="w loc">
+
+    <p class="l"><a href="#" title="商城首页">商城首页</a><samp>|</samp><a href="#" title="我的商城">我的商城</a></p>
+
+    <dl id="cart" class="cart l">
+        <dt><a href="#" title="结算">结算</a>购物车:<b id="">123</b>件</dt>
+        <dd class="hidden">
+            <p class="alg_c hidden">购物车中还没有商品，赶紧选购吧！</p>
+            <h3 title="最新加入的商品">最新加入的商品</h3>
+            <ul class="uls">
+                <li>
+                    <a href="#" title="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L"><img
+                            src="../res/img/pic/p50x50.jpg"
+                            alt="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L"/></a>
+                    <p class="dt"><a href="#" title="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L">倍力通(Prestone)超级全合成机油5W-40
+                        SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L</a></p>
+                    <p class="dd">
+                        <b><var>¥3599</var><span>x1</span></b>
+                        <a href="javascript:void(0);" title="删除" class="del">删除</a>
+                    </p>
+                </li>
+                <li>
+                    <a href="#" title="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L"><img
+                            src="../res/img/pic/p50x50b.jpg"
+                            alt="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L"/></a>
+                    <p class="dt"><a href="#" title="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L">倍力通(Prestone)超级全合成机油5W-40
+                        SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L</a></p>
+                    <p class="dd">
+                        <b><var>¥3599</var><span>x1</span></b>
+                        <a href="javascript:void(0);" title="删除" class="del">删除</a>
+                    </p>
+                </li>
+                <li>
+                    <a href="#" title="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L"><img
+                            src="../res/img/pic/p50x50c.jpg"
+                            alt="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L"/></a>
+                    <p class="dt"><a href="#" title="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L">倍力通(Prestone)超级全合成机油5W-40
+                        SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L</a></p>
+                    <p class="dd">
+                        <b><var>¥3599</var><span>x1</span></b>
+                        <a href="javascript:void(0);" title="删除" class="del">删除</a>
+                    </p>
+                </li>
+                <li>
+                    <a href="#" title="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L"><img
+                            src="../res/img/pic/p50x50.jpg"
+                            alt="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L"/></a>
+                    <p class="dt"><a href="#" title="倍力通(Prestone)超级全合成机油5W-40 SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L">倍力通(Prestone)超级全合成机油5W-40
+                        SM级 4L倍力通(Prestone)超级全合成机油5W-40 SM级 4L</a></p>
+                    <p class="dd">
+                        <b><var>¥3599</var><span>x1</span></b>
+                        <a href="javascript:void(0);" title="删除" class="del">删除</a>
+                    </p>
+                </li>
+            </ul>
+            <div>
+                <p>共<b>4</b>件商品&nbsp;&nbsp;&nbsp;&nbsp;共计<b class="f20">¥3599.00</b></p>
+                <a href="#" title="去购物车结算" class="inb btn120x30c">去购物车结算</a>
+            </div>
+        </dd>
+    </dl>
+
+    <p class="r"><a href="index.html" title="商城首页">商城首页</a><samp>&gt;</samp><a href="#" title="手机商城">手机商城</a><samp>
+        &gt;</samp><a href="#" title="HTC">HTC</a><samp>&gt;</samp><span class="gray">HTC A6390</span></p>
+
+</div>
+
+<div class="w ofc mt">
+    <div class="l wl">
+
+        <h2 class="h2 h2_l"><em title="商品分类">商品分类</em><cite></cite></h2>
+        <div class="box bg_gray">
+            <ul class="ul left_nav">
+                <li><a href="#" title="网上选号"><img src="../res/img/gray/ln01.gif" alt="网上选号"/>网上选号</a></li>
+                <li><a href="#" title="手机商城"><img src="../res/img/gray/ln02.gif" alt="手机商城"/>手机商城</a></li>
+                <li><a href="#" title="优惠活动"><img src="../res/img/gray/ln03.gif" alt="优惠活动"/>优惠活动</a></li>
+            </ul>
+        </div>
+
+        <h2 class="h2 h2_l mt"><em title="销量排行榜">销量排行榜</em><cite></cite></h2>
+        <div class="box bg_white">
+            <ul class="uls x_150x150">
+                <li class="here">
+                    <var class="sfont">1.</var>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <!-- dt 11个文字+... -->
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉摩托罗拉托罗拉...</a></dt>
+                        <!-- dd 23个文字+... -->
+                        <dd class="h40">摩托罗拉摩托罗拉托罗拉拉摩托罗拉摩托罗拉托罗罗...</dd>
+                        <dd><span class="gray">抢购价：</span><var class="red b f14">￥3599</var></dd>
+                    </dl>
+                </li>
+                <li>
+                    <var class="sfont">2.</var>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="h40">3G手机（黑）WCDMA/GSM 新品上市！！下单就返</dd>
+                        <dd><span class="gray">抢购价：</span><var class="red b f14">￥3599</var></dd>
+                    </dl>
+                </li>
+                <li>
+                    <var class="sfont">3.</var>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="h40">3G手机（黑）WCDMA/GSM 新品上市！！下单就返</dd>
+                        <dd><span class="gray">抢购价：</span><var class="red b f14">￥3599</var></dd>
+                    </dl>
+                </li>
+                <li>
+                    <var class="sfont">4.</var>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="h40">3G手机（黑）WCDMA/GSM 新品上市！！下单就返</dd>
+                        <dd><span class="gray">抢购价：</span><var class="red b f14">￥3599</var></dd>
+                    </dl>
+                </li>
+                <li>
+                    <var class="sfont">5.</var>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="h40">3G手机（黑）WCDMA/GSM 新品上市！！下单就返</dd>
+                        <dd><span class="gray">抢购价：</span><var class="red b f14">￥3599</var></dd>
+                    </dl>
+                </li>
+                <li>
+                    <var class="sfont">6.</var>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="h40">3G手机（黑）WCDMA/GSM 新品上市！！下单就返</dd>
+                        <dd><span class="gray">抢购价：</span><var class="red b f14">￥3599</var></dd>
+                    </dl>
+                </li>
+                <li>
+                    <var class="sfont">7.</var>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="h40">3G手机（黑）WCDMA/GSM 新品上市！！下单就返</dd>
+                        <dd><span class="gray">抢购价：</span><var class="red b f14">￥3599</var></dd>
+                    </dl>
+                </li>
+                <li>
+                    <var class="sfont">8.</var>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="h40">3G手机（黑）WCDMA/GSM 新品上市！！下单就返</dd>
+                        <dd><span class="gray">抢购价：</span><var class="red b f14">￥3599</var></dd>
+                    </dl>
+                </li>
+                <li>
+                    <var class="sfont">9.</var>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="h40">3G手机（黑）WCDMA/GSM 新品上市！！下单就返</dd>
+                        <dd><span class="gray">抢购价：</span><var class="red b f14">￥3599</var></dd>
+                    </dl>
+                </li>
+                <li>
+                    <var class="sfont">10.</var>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="h40">3G手机（黑）WCDMA/GSM 新品上市！！下单就返</dd>
+                        <dd><span class="gray">抢购价：</span><var class="red b f14">￥3599</var></dd>
+                    </dl>
+                </li>
+            </ul>
+            <script language="javascript" type="text/javascript">
+                $('.x_150x150').each(function (i, items_list) {
+                    $(items_list).find('li').hover(function () {
+                        $(items_list).find('li').each(function (j, li) {
+                            $(li).removeClass('here');
+                        });
+                        $(this).addClass('here');
+                    }, function () {
+                    });
+                });
+            </script>
+        </div>
+
+        <h2 class="h2 h2_l mt"><em title="我的浏览记录">我的浏览记录</em><cite></cite></h2>
+        <div class="box bg_white">
+            <ul class="uls x_50x50">
+                <li>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <!-- dt 8个文字+... -->
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉摩托罗拉拉...</a></dt>
+                        <dd class="orange">￥3599 ~ ￥4599</dd>
+                    </dl>
+                </li>
+                <li>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="orange">￥3599 ~ ￥4599</dd>
+                    </dl>
+                </li>
+                <li>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="orange">￥3599 ~ ￥4599</dd>
+                    </dl>
+                </li>
+                <li>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="orange">￥3599 ~ ￥4599</dd>
+                    </dl>
+                </li>
+                <li>
+                    <a href="#" title="张同来" target="_blank" class="pic"><img src="../res/img/pic/p140X140b.png"
+                                                                             alt="摩托罗拉XT319"/></a>
+                    <dl>
+                        <dt><a href="#" title="摩托罗拉XT319" target="_blank">摩托罗拉XT319</a></dt>
+                        <dd class="orange">￥3599 ~ ￥4599</dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+
+        <div class="ad200x75 mt"><img src="../res/img/pic/ad200x75.jpg" alt=""/></div>
+
+        <div class="ad200x169 mt"><img src="../res/img/pic/ad200x169.jpg" alt=""/></div>
+
+        <div class="ad200x244 mt"><img src="../res/img/pic/ad200x244.jpg" alt=""/></div>
+
+    </div>
+    <div class="r wr">
+
+        <div class="product">
+            <h2>苹果钟福成<span class="gray f14">很号</span></h2>
+            <div class="showPro">
+                <div class="big"><a id="showImg" class="cloud-zoom" href="http://localhost:8081/file
+Expression item.imgs is undefined on line 663, column 90 in productDetail.ftl.
+The problematic instruction:
+----------
+==> ${item.imgs} [on line 663, column 88 in productDetail.ftl]
+----------
+
+Java backtrace for programmers:
+----------
+freemarker.core.InvalidReferenceException: Expression item.imgs is undefined on line 663, column 90 in productDetail.ftl.
+	at freemarker.core.TemplateObject.assertNonNull(TemplateObject.java:125)
+	at freemarker.core.Expression.getStringValue(Expression.java:118)
+	at freemarker.core.Expression.getStringValue(Expression.java:93)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:76)
+	at freemarker.core.Environment.visit(Environment.java:221)
+	at freemarker.core.MixedContent.accept(MixedContent.java:92)
+	at freemarker.core.Environment.visit(Environment.java:221)
+	at freemarker.core.Environment.process(Environment.java:199)
+	at freemarker.template.Template.process(Template.java:237)
+	at com.rl.ecps.utils.FMutil.ouputFile(FMutil.java:36)
+	at com.rl.ecps.webservice.EbWSItemServiceImpl.publishItem(EbWSItemServiceImpl.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.apache.cxf.service.invoker.AbstractInvoker.performInvocation(AbstractInvoker.java:173)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:89)
+	at org.apache.cxf.jaxws.JAXWSMethodInvoker.invoke(JAXWSMethodInvoker.java:61)
+	at org.apache.cxf.service.invoker.AbstractInvoker.invoke(AbstractInvoker.java:75)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor$1.run(ServiceInvokerInterceptor.java:58)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at org.apache.cxf.workqueue.SynchronousExecutor.execute(SynchronousExecutor.java:37)
+	at org.apache.cxf.interceptor.ServiceInvokerInterceptor.handleMessage(ServiceInvokerInterceptor.java:106)
+	at org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:255)
+	at org.apache.cxf.transport.ChainInitiationObserver.onMessage(ChainInitiationObserver.java:113)
+	at org.apache.cxf.transport.servlet.ServletDestination.invoke(ServletDestination.java:97)
+	at org.apache.cxf.transport.servlet.ServletController.invokeDestination(ServletController.java:461)
+	at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:188)
+	at org.apache.cxf.transport.servlet.AbstractCXFServlet.invoke(AbstractCXFServlet.java:148)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.handleRequest(AbstractHTTPServlet.java:179)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.doPost(AbstractHTTPServlet.java:103)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:641)
+	at org.apache.cxf.transport.servlet.AbstractHTTPServlet.service(AbstractHTTPServlet.java:159)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:306)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:240)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:164)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:100)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:550)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:380)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:243)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:188)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:166)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:288)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:722)
